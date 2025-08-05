@@ -1,0 +1,69 @@
+
+type UserDTO {
+    userName:String
+    email:String
+    mobile:String
+    userRole:UserRole
+    deliveryInformation:[DeliveryInfoDTO]
+    cart:String
+    cartItem:String
+    orders:[OrderInfoResponseDTO]
+    ordersString:String
+    extra:String
+}
+
+type DeliveryInfoDTO{
+	deliveryId: String
+  	firstName: String
+  	lastName: String
+  	mobileNumber1: String
+  	mobileNumber2: String
+  	emailAddress: String
+  	address1: String
+  	address2: String
+  	state: String
+  	district: String
+  	city: String
+  	pinCode: Int
+}
+
+
+type CartItem {
+  key: String!
+  value: Int!
+}
+
+type OrderInfoResponseDTO {
+  	orderId: String
+  	products: [ProductItem]
+  	deliveryInfo: DeliveryInfoDTO
+  	createdDate: String
+  	paymentStatus: PaymentStatus
+  	deliveryStatus: DeliveryStatus
+}
+
+type ProductItem {
+  	key: String
+  	value: Int
+}
+
+enum UserRole{
+	SELLER
+	BUYER
+}
+
+enum PaymentStatus {
+  	SUCCESS
+  	PANDING
+ 	CANCELED
+}
+
+enum DeliveryStatus {
+ 	INTRANSIT
+ 	OUTFORDELIVERY
+ 	DELIVERED
+}
+
+type Query{
+    getUser:UserDTO
+}
